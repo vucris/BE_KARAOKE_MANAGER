@@ -10,7 +10,7 @@ class RoomCart extends Model
     use HasFactory;
 
     protected $fillable = ['room_id', 'service_id', 'quantity'];
-
+    protected $with = ['service']; // Tự động load service khi lấy giỏ hàng
     public function room()
     {
         return $this->belongsTo(Room::class);

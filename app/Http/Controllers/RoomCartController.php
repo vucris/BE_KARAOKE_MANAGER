@@ -9,10 +9,9 @@ use App\Models\Service;
 class RoomCartController extends Controller
 {
     // Lấy giỏ hàng của một phòng
-    public function getRoomCart($roomId)
-    {
-        $cart = RoomCart::where('room_id', $roomId)->with('service')->get();
-        return response()->json($cart);
+    public function getRoomCart($roomId) {
+        $cart = RoomCart::where('room_id', $roomId)->with('service')->get(); // Load luôn service
+        return response()->json(['cart' => $cart], 200);
     }
 
     // Thêm sản phẩm vào giỏ hàng
